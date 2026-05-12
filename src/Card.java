@@ -5,9 +5,21 @@ public class Card {
     public String name;
 
 
-    public Card(int pvalue, String psuit, int pname ) {
+    public Card(int pvalue, int psuit, int pname ) {
         value= pvalue;
-        suit = psuit;
+       // suit = psuit;
+        if (psuit ==0){
+            suit="Hearts";
+        }
+        else if (psuit ==1){
+            suit="Diamonds";
+        }
+        else if (psuit ==2){
+            suit="Spades";
+        }
+        else if (psuit ==3){
+            suit="Clubs";
+        }
         if (pname ==0 ){
             name = "Ace";
             value = 11;
