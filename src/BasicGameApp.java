@@ -24,6 +24,8 @@ public class BasicGameApp {
         printDeck();
         me = new Player();
         d = new Dealer();
+        me.printInfo();
+        d.printInfo();
     }
 
     public void compare() {
