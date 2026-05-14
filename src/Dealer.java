@@ -12,8 +12,19 @@ public class Dealer {
     }
 
     public void printInfo(){
-        System.out.println(" The dealer has " + cardTotal + " total cards and" + hand + "cards in their hand" + " and it is " + isBust + " that they have busted" + " and it is " + isOver15 + " that they are over 15");
+        System.out.println("The dealers card value is " + cardTotal +   " and it is " + isBust + " that they have busted" + " and it is " + isOver15 + " that they are over 15");
+        for (int s=0; s<hand.length; s++){
+            hand[s].printInfo();
+        }
     }
+    public void calculateTotal(){
+        cardTotal=0;
+        for (int f=0; f<hand.length; f++){
+            cardTotal += hand[f].value;
+        }
+
+    }
+
 
     public void hit(){
     }

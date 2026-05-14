@@ -9,7 +9,7 @@ public class Player {
 
 
     public Player(){
-        cardTotal = 0;
+        cardTotal = 2;
         isBust = false;
         isHit = true;
         Name = "Me";
@@ -18,8 +18,22 @@ public class Player {
 
     }
     public void printInfo(){
-        System.out.println("Hello " + Name + " you have " + cardTotal + " total cards and" + hand + "cards in your hand" + " and it is " + isBust + " that you have busted");
+        System.out.println("Hello " + Name + " your total value of cards " + cardTotal +  " and it is " + isBust + " that you have busted");
+        for (int s=0; s<hand.length; s++){
+            hand[s].printInfo();
+        }
     }
+
+    public void calculateTotal(){
+        cardTotal=0;
+        for (int f=0; f<hand.length; f++){
+            cardTotal += hand[f].value;
+        }
+
+    }
+
+
+
     public void hit(){
 
     }
