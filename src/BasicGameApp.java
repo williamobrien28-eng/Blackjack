@@ -40,6 +40,7 @@ public class BasicGameApp {
         me.Name= name;
         me.printInfo();
         d.printInfo();
+
     }
 
     public void compare() {
