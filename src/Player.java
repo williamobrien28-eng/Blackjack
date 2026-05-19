@@ -11,7 +11,7 @@ public class Player {
     public Player(){
         cardTotal = 2;
         isBust = false;
-        isHit = true;
+        isHit = false;
         Name = "Me";
         hand = new Card[2];
 

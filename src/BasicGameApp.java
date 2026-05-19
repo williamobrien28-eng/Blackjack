@@ -20,6 +20,7 @@ public class BasicGameApp {
                 counter++;
                 //deck[x].printInfo();
             }
+
         }
         shuffle();
         printDeck();
@@ -36,10 +37,34 @@ public class BasicGameApp {
         Scanner s = new Scanner(System.in);
         System.out.println("what is your name");
         String name = s.nextLine();
-        System.out.println(name);
         me.Name= name;
         me.printInfo();
         d.printInfo();
+        if (d.cardTotal>21){
+            d.isBust=true;
+        }
+        if (me.cardTotal>21){
+            me.isBust=true;
+        }
+       if (me.isBust == true){
+           System.out.println("YOU HAVE BUSTED GAME OVER");
+       }
+        if (d.isBust == true){
+            System.out.println("THE DEALER HAS BUSTED YOU WIN");
+        }
+        System.out.println("Do you want to hit yes or no");
+        String choice = s.nextLine();
+       if (choice.equals("yes")){
+           me.isHit = true;
+       }
+       if (me.isHit == true){
+        me.hand[2] = deck[4];
+       }
+
+
+
+
+
 
     }
 
