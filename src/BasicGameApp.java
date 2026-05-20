@@ -40,33 +40,44 @@ public class BasicGameApp {
         me.Name= name;
         me.printInfo();
         d.printInfo();
-        if (d.cardTotal>21){
-            d.isBust=true;
-        }
-        if (me.cardTotal>21){
-            me.isBust=true;
-        }
-       if (me.isBust == true){
-           System.out.println("YOU HAVE BUSTED GAME OVER");
-       }
-        if (d.isBust == true){
-            System.out.println("THE DEALER HAS BUSTED YOU WIN");
-        }
         System.out.println("Do you want to hit yes or no");
         String choice = s.nextLine();
-       if (choice.equals("yes")){
-           me.isHit = true;
-       }
-       if (me.isHit == true){
-        me.hand[2] = deck[4];
-       }
+      if (choice.equals("yes")){
+          me.hand[me.cardsInHand] = deck[4];
+          me.cardsInHand++;
+          me.calculateTotal();
+          me.printInfo();
+      }
+      if (me.cardTotal >21){
+          me.isBust = true;
+          System.out.println("YOU BUSTED");
+      }
+        System.out.println("Do you want to hit yes or no");
+        String Choice = s.nextLine();
+        if (Choice.equals("yes")){
+            me.hand[me.cardsInHand] = deck[5];
+            me.cardsInHand++;
+            me.calculateTotal();
+            me.printInfo();
+        }
+        if (me.cardTotal >21){
+            me.isBust = true;
+            System.out.println("YOU BUSTED");
+        }
+        if (d.cardTotal <16){
+            d.hand[d.cardsInHand] = deck [5];
+            d.cardsInHand++;
+            d.calculateTotal();
+            System.out.println("Dealer Hits");
+            d.printInfo();
+        }
+        if (d.cardTotal >21) {
+            d.isBust = true;
+            System.out.println("DEALER BUSTED");
+        }
 
 
-
-
-
-
-    }
+        }
 
     public void compare() {
 

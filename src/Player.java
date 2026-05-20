@@ -6,6 +6,7 @@ public class Player {
     public boolean isHit;
     public String Name;
     public Card[] hand;
+    public int cardsInHand;
 
 
     public Player(){
@@ -13,20 +14,21 @@ public class Player {
         isBust = false;
         isHit = false;
         Name = "Me";
-        hand = new Card[2];
+        hand = new Card[10];
+        cardsInHand=2;
 
 
     }
     public void printInfo(){
         System.out.println("Hello " + Name + " your total value of cards " + cardTotal +  " and it is " + isBust + " that you have busted");
-        for (int s=0; s<hand.length; s++){
+        for (int s=0; s<cardsInHand; s++){
             hand[s].printInfo();
         }
     }
 
     public void calculateTotal(){
         cardTotal=0;
-        for (int f=0; f<hand.length; f++){
+        for (int f=0; f<cardsInHand; f++){
             cardTotal += hand[f].value;
         }
 

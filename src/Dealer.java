@@ -3,23 +3,25 @@ public class Dealer {
     public int cardTotal;
     public boolean isBust;
     public Card[] hand;
+    public int cardsInHand;
 
     public Dealer() {
         isOver15=false;
         cardTotal=0;
         isBust=false;
-        hand = new Card[2];
+        hand = new Card[10];
+        cardsInHand=2;
     }
 
     public void printInfo(){
         System.out.println("The dealers card value is " + cardTotal +   " and it is " + isBust + " that they have busted" + " and it is " + isOver15 + " that they are over 15");
-        for (int s=0; s<hand.length; s++){
+        for (int s=0; s<cardsInHand; s++){
             hand[s].printInfo();
         }
     }
     public void calculateTotal(){
         cardTotal=0;
-        for (int f=0; f<hand.length; f++){
+        for (int f=0; f<cardsInHand; f++){
             cardTotal += hand[f].value;
         }
 
