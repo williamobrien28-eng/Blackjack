@@ -75,7 +75,7 @@ public class Card {
        // name = pname;
     }
 
-    public void printInfo(){
+   public void printInfo(){
         System.out.println("the " + name + " of " + suit + " is worth " + value + " points.");
 
     }

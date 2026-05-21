@@ -52,14 +52,17 @@ public class BasicGameApp {
           me.isBust = true;
           System.out.println("YOU BUSTED");
       }
-        System.out.println("Do you want to hit yes or no");
-        String Choice = s.nextLine();
-        if (Choice.equals("yes")){
-            me.hand[me.cardsInHand] = deck[5];
-            me.cardsInHand++;
-            me.calculateTotal();
-            me.printInfo();
-        }
+      if (choice.equals("yes") && me.isBust == false) {
+          System.out.println("Do you want to hit yes or no");
+          String Choice = s.nextLine();
+          if (Choice.equals("yes")) {
+              me.hand[me.cardsInHand] = deck[5];
+              me.cardsInHand++;
+              me.calculateTotal();
+              me.printInfo();
+          }
+      }
+
         if (me.cardTotal >21){
             me.isBust = true;
             System.out.println("YOU BUSTED");
@@ -75,9 +78,21 @@ public class BasicGameApp {
             d.isBust = true;
             System.out.println("DEALER BUSTED");
         }
-
-
+        if (me.isBust == true && d.isBust == false){
+            System.out.println("DEALER WINS");
         }
+        if (d.isBust == true && me.isBust == false){
+            System.out.println("YOU WIN");
+        }
+
+        if (d.cardTotal > me.cardTotal){
+            System.out.println("DEALER WINS");
+        }
+        if (me.cardTotal > d.cardTotal){
+            System.out.println("YOU WIN");
+        }
+        }
+
 
     public void compare() {
 
