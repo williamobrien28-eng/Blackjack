@@ -19,6 +19,11 @@ public class Dealer {
             hand[s].printInfo();
         }
     }
+    public void printFirstCard(){
+        System.out.println("Dealer is Showing");
+        hand[0].printInfo();
+        System.out.println("Second Card is Hidden");
+    }
     public void calculateTotal(){
         cardTotal=0;
         for (int f=0; f<cardsInHand; f++){

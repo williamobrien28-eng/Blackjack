@@ -35,11 +35,13 @@ public class BasicGameApp {
 
 
         Scanner s = new Scanner(System.in);
+
         System.out.println("what is your name");
         String name = s.nextLine();
         me.Name= name;
         me.printInfo();
-        d.printInfo();
+        d.printFirstCard();
+        while (me.isBust == false){
         System.out.println("Do you want to hit yes or no");
         String choice = s.nextLine();
       if (choice.equals("yes")){
@@ -48,19 +50,16 @@ public class BasicGameApp {
           me.calculateTotal();
           me.printInfo();
       }
-      if (me.cardTotal >21){
+      if (me.cardTotal >21) {
           me.isBust = true;
           System.out.println("YOU BUSTED");
       }
-      if (choice.equals("yes") && me.isBust == false) {
-          System.out.println("Do you want to hit yes or no");
-          String Choice = s.nextLine();
-          if (Choice.equals("yes")) {
-              me.hand[me.cardsInHand] = deck[5];
-              me.cardsInHand++;
-              me.calculateTotal();
-              me.printInfo();
-          }
+      }
+
+
+      if (d.cardTotal >16){
+          System.out.println("Dealer reveals hidden card");
+          d.printInfo();
       }
 
         if (me.cardTotal >21){
@@ -68,29 +67,42 @@ public class BasicGameApp {
             System.out.println("YOU BUSTED");
         }
         if (d.cardTotal <16){
-            d.hand[d.cardsInHand] = deck [5];
+            d.hand[d.cardsInHand] = deck [6];
             d.cardsInHand++;
             d.calculateTotal();
             System.out.println("Dealer Hits");
             d.printInfo();
         }
-        if (d.cardTotal >21) {
-            d.isBust = true;
+       if (me.cardTotal > 21){
+           me.isBust=true;
+           System.out.println("YOU BUSTED");
+       }
+        if (d.cardTotal > 21){
+            d.isBust=true;
             System.out.println("DEALER BUSTED");
         }
-        if (me.isBust == true && d.isBust == false){
+        if (me.isBust && !d.isBust){
             System.out.println("DEALER WINS");
         }
-        if (d.isBust == true && me.isBust == false){
-            System.out.println("YOU WIN");
+        else if (d.isBust && !me.isBust){
+            System.out.println("YOU WINS");
+        }
+        else if (d.isBust && me.isBust){
+            System.out.println("BOTH BUSTED, PUSH");
+        }
+        else {
+            if (me.cardTotal > d.cardTotal){
+                System.out.println("YOU WIN");
+            }
+            else if (d.cardTotal > me.cardTotal){
+                System.out.println("DEALER WINS");
+            }
+        else {
+                System.out.println("PUSH");
+            }
+
         }
 
-        if (d.cardTotal > me.cardTotal){
-            System.out.println("DEALER WINS");
-        }
-        if (me.cardTotal > d.cardTotal){
-            System.out.println("YOU WIN");
-        }
         }
 
 
@@ -115,7 +127,7 @@ public class BasicGameApp {
 
     public void printDeck() {
         for (int x = 0; x < deck.length; x++) {
-            deck[x].printInfo();
+
         }
 
 

@@ -28,8 +28,18 @@ public class Player {
 
     public void calculateTotal(){
         cardTotal=0;
+        int aceCount = 0;
+
         for (int f=0; f<cardsInHand; f++){
+            if (hand[f].value == 11){
+                aceCount ++;
+            }
             cardTotal += hand[f].value;
+            while (cardTotal > 21 && aceCount > 0) {
+                cardTotal -= 10;
+                aceCount--;
+            }
+
         }
 
     }
