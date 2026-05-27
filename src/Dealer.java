@@ -25,10 +25,23 @@ public class Dealer {
         System.out.println("Second Card is Hidden");
     }
     public void calculateTotal(){
-        cardTotal=0;
-        for (int f=0; f<cardsInHand; f++){
+        cardTotal = 0;
+        int aceCount = 0;
+
+        for (int f = 0; f < cardsInHand; f++){
+
             cardTotal += hand[f].value;
+
+            if (hand[f].value == 11){
+                aceCount++;
+            }
         }
+
+        while (cardTotal > 21 && aceCount > 0){
+            cardTotal -= 10;
+            aceCount--;
+        }
+
 
     }
 

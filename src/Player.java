@@ -34,12 +34,12 @@ public class Player {
             if (hand[f].value == 11){
                 aceCount ++;
             }
-            cardTotal += hand[f].value;
-            while (cardTotal > 21 && aceCount > 0) {
-                cardTotal -= 10;
-                aceCount--;
-            }
 
+
+        }
+        while (cardTotal > 21 && aceCount > 0){
+            cardTotal -= 10;
+            aceCount--;
         }
 
     }

@@ -18,11 +18,11 @@ public class BasicGameApp {
             for (int x = 0; x < 13; x++) { //13 cards per suit
                 deck[counter] = new Card(10, y, x);
                 counter++;
-                //deck[x].printInfo();
             }
 
         }
         shuffle();
+        int deckPosition = 6;
         printDeck();
         me = new Player();
         d = new Dealer();
@@ -45,11 +45,13 @@ public class BasicGameApp {
         System.out.println("Do you want to hit yes or no");
         String choice = s.nextLine();
       if (choice.equals("yes")){
-          me.hand[me.cardsInHand] = deck[4];
           me.cardsInHand++;
           me.calculateTotal();
           me.printInfo();
       }
+            if (choice.equals("no")){
+                break;
+            }
       if (me.cardTotal >21) {
           me.isBust = true;
           System.out.println("YOU BUSTED");
@@ -67,7 +69,14 @@ public class BasicGameApp {
             System.out.println("YOU BUSTED");
         }
         if (d.cardTotal <16){
-            d.hand[d.cardsInHand] = deck [6];
+            d.hand[d.cardsInHand] = deck [4];
+            d.cardsInHand++;
+            d.calculateTotal();
+            System.out.println("Dealer Hits");
+            d.printInfo();
+        }
+        if (d.cardTotal <16){
+            d.hand[d.cardsInHand] = deck [5];
             d.cardsInHand++;
             d.calculateTotal();
             System.out.println("Dealer Hits");
