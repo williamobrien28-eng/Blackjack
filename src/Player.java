@@ -7,6 +7,7 @@ public class Player {
     public String Name;
     public Card[] hand;
     public int cardsInHand;
+    public int money;
 
 
     public Player(){
@@ -16,6 +17,7 @@ public class Player {
         Name = "Me";
         hand = new Card[10];
         cardsInHand=2;
+        money = 1000;
 
 
     }
@@ -27,16 +29,18 @@ public class Player {
     }
 
     public void calculateTotal(){
-        cardTotal=0;
+        cardTotal = 0;
         int aceCount = 0;
 
-        for (int f=0; f<cardsInHand; f++){
+        for (int f = 0; f < cardsInHand; f++){
+
+            cardTotal += hand[f].value;
+
             if (hand[f].value == 11){
-                aceCount ++;
+                aceCount++;
             }
-
-
         }
+        //change ace from 11 to 1 if player busts
         while (cardTotal > 21 && aceCount > 0){
             cardTotal -= 10;
             aceCount--;
